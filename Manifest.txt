@@ -1,0 +1,6 @@
+.autotest
+History.txt
+Manifest.txt
+README.txt
+Rakefile
+lib/omnifocus/redmine.rb
