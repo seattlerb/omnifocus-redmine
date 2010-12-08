@@ -4,6 +4,7 @@ require 'rubygems'
 require 'hoe'
 
 Hoe.plugin :seattlerb
+Hoe.plugins.delete :rubyforge
 
 Hoe.spec 'omnifocus-redmine' do
   developer('aja', 'kushali@rubyforge.org')
