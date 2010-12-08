@@ -24,9 +24,9 @@ module OmniFocus::Redmine
   def populate_redmine_tasks
     config      = load_or_create_redmine_config
     redmine_url = config[:redmine_url]
-    user    = config[:user]
+    user_id    = config[:user_id]
 
-    query = "#{redmine_url}/issues.xml?assigned_to='#{user}'"
+    query = "#{redmine_url}/issues.xml?assigned_to_id=#{user_id}"
 
     mechanize.get(query)
     details = Nokogiri.parse(mechanize.current_page.body)
