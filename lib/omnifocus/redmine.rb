@@ -45,7 +45,7 @@ module OmniFocus::Redmine
         title = i.xpath('./subject').text
         component = i.xpath('./category/@name').text
         project = "#{product}-#{component}"
-        url = "http://#{redmine_url}/issues/#{bug_number}"
+        url = "#{redmine_url}/issues/#{bug_number}"
 
         bug_db[project][ticket_id] = ["#{ticket_id}: #{title}", url]
       end
