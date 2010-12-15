@@ -1,5 +1,6 @@
 === 1.0.1 / 2010-12-07
 * Fixed links in omnifocus
+* Fixed url for pulling bugs from assigned_to to assigned_to_id
 
 === 1.0.0 / 2010-11-30
 
