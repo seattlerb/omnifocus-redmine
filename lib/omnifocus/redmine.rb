@@ -1,5 +1,5 @@
 module OmniFocus::Redmine
-  VERSION = '1.0.0'
+  VERSION = '1.0.1'
 
   def load_or_create_redmine_config
     path   = File.expand_path "~/.omnifocus-redmine.yml"
