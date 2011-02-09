@@ -9,6 +9,20 @@ Plugin for the omnifocus gem to provide synchronization with Redmine Issues.
 The first time this runs it creates a yaml file in your home directory for 
 the redmine url and username.
 
+The queries config is optional.  If it is not included omnifocus-redmine will
+pull all open bugs assigned to the specified user.
+
+To use a custom query or multiple queries you must include a queries parameter
+in your config.
+
+The queries config is an array of strings.  These strings will be appended onto a
+query of the form: http://your-redmine-url/issues.xml?assigned_to_id=user-id?.
+
+Example:
+:user_id: 20
+:redmine_url: http://redmine/
+:queries: ["status_id=1", "status_id=2"]
+
 == FEATURES/PROBLEMS:
 
 * Provides redmine synchronization

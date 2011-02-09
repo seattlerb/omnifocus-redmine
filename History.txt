@@ -1,3 +1,6 @@
+=== 1.1.0 / 2011-02-8
+* Added ability to run multiple queries.
+
 === 1.0.1 / 2010-12-07
 * Fixed links in omnifocus
 * Fixed url for pulling bugs from assigned_to to assigned_to_id

@@ -1,5 +1,5 @@
 module OmniFocus::Redmine
-  VERSION = '1.0.1'
+  VERSION = '1.1.0'
 
   def load_or_create_redmine_config
     path   = File.expand_path "~/.omnifocus-redmine.yml"
@@ -25,9 +25,20 @@ module OmniFocus::Redmine
     config      = load_or_create_redmine_config
     redmine_url = config[:redmine_url]
     user_id    = config[:user_id]
+    default_query = "#{redmine_url}/issues.xml?assigned_to_id=#{user_id}"
 
-    query = "#{redmine_url}/issues.xml?assigned_to_id=#{user_id}"
+    unless config[:queries]
+      process_query_results default_query
+    else
+      queries = config[:queries]
+      queries.each do |q|
+        process_query_results "#{default_query}&#{q}"
+      end
+    end
+  end
 
+  def process_query_results(query)
+    puts query
     mechanize.get(query)
     details = Nokogiri.parse(mechanize.current_page.body)
 
@@ -50,5 +61,6 @@ module OmniFocus::Redmine
         bug_db[project][ticket_id] = ["#{ticket_id}: #{title}", url]
       end
     end
+
   end
 end
