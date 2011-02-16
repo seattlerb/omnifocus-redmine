@@ -1,3 +1,8 @@
+=== 1.2.0 / 2011-02-15
+* Fixed a bug with a missing variable
+* Removed an errant puts
+* Added support for authentication
+
 === 1.1.0 / 2011-02-8
 * Added ability to run multiple queries.
 

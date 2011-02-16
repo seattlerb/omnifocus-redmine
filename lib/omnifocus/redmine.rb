@@ -1,5 +1,5 @@
 module OmniFocus::Redmine
-  VERSION = '1.1.0'
+  VERSION = '1.2.0'
 
   def load_or_create_redmine_config
     path   = File.expand_path "~/.omnifocus-redmine.yml"
@@ -7,8 +7,10 @@ module OmniFocus::Redmine
 
     unless config then
       config = {
-        :user          => "Admin User",
+        :user_id       => "20",
         :redmine_url   => "http://redmine",
+        :username      => "UserName",
+        :password      => "Password"
       }
 
       File.open(path, "w") { |f|
@@ -24,22 +26,36 @@ module OmniFocus::Redmine
   def populate_redmine_tasks
     config      = load_or_create_redmine_config
     redmine_url = config[:redmine_url]
-    user_id    = config[:user_id]
+    user_id     = config[:user_id]
+    username    = config[:username]
+    password    = config[:password]
+
+    # Authenticate if the user name and password are defined
+    if username and password then
+      mechanize.basic_auth(username, password)
+    end
+
     default_query = "#{redmine_url}/issues.xml?assigned_to_id=#{user_id}"
 
     unless config[:queries]
-      process_query_results default_query
+      process_query_results(default_query, redmine_url)
     else
       queries = config[:queries]
       queries.each do |q|
-        process_query_results "#{default_query}&#{q}"
+        process_query_results("#{default_query}&#{q}", redmine_url)
       end
     end
   end
 
-  def process_query_results(query)
-    puts query
-    mechanize.get(query)
+  def process_query_results(query, redmine_url)
+    begin
+      mechanize.get(query)
+    rescue Mechanize::ResponseCodeError => e
+      if e.response_code == "401" then
+        abort "Unauthorized.  Check username and password in .omnifocus-redmine"
+      end
+    end
+
     details = Nokogiri.parse(mechanize.current_page.body)
 
     issues = details.root.xpath('//issue')
