@@ -6,7 +6,7 @@
 
 Plugin for the omnifocus gem to provide synchronization with Redmine Issues.
 
-This plugin uses the Redmine REST API. It must be enabled by an adminstrator 
+This plugin uses the Redmine REST API. It must be enabled by an administrator
 for the plugin to work.  
 
 The first time this runs it creates a yaml file in your home directory for 
@@ -25,7 +25,8 @@ the configuration data.
 
  * queries is optional. It is used for custom queries or multiple queries. 
    The queries config is an array of strings.  The strings will be appended 
-   to a query of the form: "http://redmine_url/issues.xml?assigned_to_id=user_id".
+   to a query of the form: 
+      "http://redmine_url/issues.xml?assigned_to_id=user_id".
 
 Example:
 :user_id: 20
