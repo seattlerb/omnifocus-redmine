@@ -1,6 +1,7 @@
-= omnifocus_redmine
+= omnifocus-redmine
 
-* http://rubyforg.org/projects/seattlerb
+home :: https://github.com/seattlerb/omnifocus-redmine
+rdoc :: http://seattlerb.rubyforge.org/omnifocus-redmine
 
 == DESCRIPTION:
 
@@ -51,7 +52,7 @@ Example:
 
 (The MIT License)
 
-Copyright (c) 2010 Aja Hammerly
+Copyright (c) Aja Hammerly, seattle.rb
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
