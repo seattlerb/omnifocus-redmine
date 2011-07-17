@@ -40,7 +40,7 @@ module OmniFocus::Redmine
     default_query = "#{redmine_url}/issues.xml?assigned_to_id=#{user_id}"
 
     unless config[:queries]
-      process_query_results(default_query, redmine_url)
+      process_query_results(default_query, redmine_url, just_project)
     else
       queries = config[:queries]
       queries.each do |q|
