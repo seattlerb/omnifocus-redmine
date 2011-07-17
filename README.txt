@@ -29,12 +29,18 @@ the configuration data.
    to a query of the form: 
       "http://redmine_url/issues.xml?assigned_to_id=user_id".
 
+ * just_project is optional.  It is used to configure how to name the 
+   omnifocus projects used for issues.  If just_project is true each redmine
+   project will correspond to an omnifocus project.  If it is false the 
+   omnifocus projects will be name with redmine_project-redmine_component.
+
 Example:
 :user_id: 20
 :redmine_url: http://redmine/
 :username: me
 :password: 1234
 :queries: ["status_id=1", "status_id=2"]
+:just_project: false
 
 == FEATURES/PROBLEMS:
 

@@ -1,5 +1,5 @@
 module OmniFocus::Redmine
-  VERSION = '1.2.0'
+  VERSION = '1.2.1'
 
   def load_or_create_redmine_config
     path   = File.expand_path "~/.omnifocus-redmine.yml"
@@ -10,7 +10,8 @@ module OmniFocus::Redmine
         :user_id       => "20",
         :redmine_url   => "http://redmine",
         :username      => "UserName",
-        :password      => "Password"
+        :password      => "Password",
+        :just_project  => false
       }
 
       File.open(path, "w") { |f|
@@ -24,11 +25,12 @@ module OmniFocus::Redmine
   end
 
   def populate_redmine_tasks
-    config      = load_or_create_redmine_config
-    redmine_url = config[:redmine_url]
-    user_id     = config[:user_id]
-    username    = config[:username]
-    password    = config[:password]
+    config       = load_or_create_redmine_config
+    redmine_url  = config[:redmine_url]
+    user_id      = config[:user_id]
+    username     = config[:username]
+    password     = config[:password]
+    just_project = config[:just_project]
 
     # Authenticate if the user name and password are defined
     if username and password then
@@ -42,12 +44,14 @@ module OmniFocus::Redmine
     else
       queries = config[:queries]
       queries.each do |q|
-        process_query_results("#{default_query}&#{q}", redmine_url)
+        process_query_results("#{default_query}&#{q}",
+                              redmine_url,
+                              just_project)
       end
     end
   end
 
-  def process_query_results(query, redmine_url)
+  def process_query_results(query, redmine_url, just_project)
     begin
       mechanize.get(query)
     rescue Mechanize::ResponseCodeError => e
@@ -71,7 +75,11 @@ module OmniFocus::Redmine
         product = i.xpath('./project/@name').text.downcase
         title = i.xpath('./subject').text
         component = i.xpath('./category/@name').text
-        project = "#{product}-#{component}"
+        if just_project then
+          project = "#{product}"
+        else
+          project = "#{product}-#{component}"
+        end
         url = "#{redmine_url}/issues/#{bug_number}"
 
         bug_db[project][ticket_id] = ["#{ticket_id}: #{title}", url]
