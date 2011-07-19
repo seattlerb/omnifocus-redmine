@@ -1,5 +1,6 @@
 module OmniFocus::Redmine
   VERSION = '1.2.1'
+  PREFIX  = "RM"
 
   def load_or_create_redmine_config
     path   = File.expand_path "~/.omnifocus-redmine.yml"
@@ -66,7 +67,7 @@ module OmniFocus::Redmine
 
     issues.each do |i|
       bug_number = i.xpath('./id').text
-      ticket_id = "RM##{bug_number}"
+      ticket_id = "#{PREFIX}##{bug_number}"
 
       if existing[ticket_id]
         project = existing[ticket_id]
