@@ -13,34 +13,37 @@ for the plugin to work.
 The first time this runs it creates a yaml file in your home directory for 
 the configuration data.
 
- * redmine_url is required. This is the base url for the redmine repository.
+* redmine_url is required. This is the base url for the redmine repository.
 
- * user_id is required. To find your user id login and go to the my account
-   page. Your user_id is the number at the end of the url for my account.
+* user_id is required. To find your user id login and go to the my account
+  page. Your user_id is the number at the end of the url for my account.
 
- * username is optional. It is used if the redmine server requires 
-   authentication.  
+* username is optional. It is used if the redmine server requires 
+  authentication.  
 
- * password is optional. It is used if the redmine server requires 
-   authentication.  
+* password is optional. It is used if the redmine server requires 
+  authentication.  
 
- * queries is optional. It is used for custom queries or multiple queries. 
-   The queries config is an array of strings.  The strings will be appended 
-   to a query of the form: 
-      "http://redmine_url/issues.xml?assigned_to_id=user_id".
+* queries is optional. It is used for custom queries or multiple queries. 
+  The queries config is an array of strings.  The strings will be appended 
+  to a query of the form: 
 
- * just_project is optional.  It is used to configure how to name the 
-   omnifocus projects used for issues.  If just_project is true each redmine
-   project will correspond to an omnifocus project.  If it is false the 
-   omnifocus projects will be name with redmine_project-redmine_component.
+    "http://redmine_url/issues.xml?assigned_to_id=user_id"
+
+* just_project is optional.  It is used to configure how to name the 
+  omnifocus projects used for issues.  If just_project is true each redmine
+  project will correspond to an omnifocus project.  If it is false the 
+  omnifocus projects will be name with redmine_project-redmine_component.
 
 Example:
-:user_id: 20
-:redmine_url: http://redmine/
-:username: me
-:password: 1234
-:queries: ["status_id=1", "status_id=2"]
-:just_project: false
+
+    ---
+    user_id: 20
+    redmine_url: http://redmine/
+    username: me
+    password: 1234
+    queries: ["status_id=1", "status_id=2"]
+    just_project: false
 
 == FEATURES/PROBLEMS:
 

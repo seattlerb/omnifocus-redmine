@@ -1,5 +1,5 @@
 module OmniFocus::Redmine
-  VERSION = '1.2.2'
+  VERSION = '1.2.3'
   PREFIX  = "RM"
 
   def load_or_create_redmine_config
