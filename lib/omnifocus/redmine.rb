@@ -1,3 +1,5 @@
+require 'yaml'
+
 module OmniFocus::Redmine
   VERSION = '1.2.3'
   PREFIX  = "RM"
