@@ -1,7 +1,7 @@
 require 'yaml'
 
 module OmniFocus::Redmine
-  VERSION = '1.2.3'
+  VERSION = '1.2.4'
   PREFIX  = "RM"
 
   def load_or_create_redmine_config

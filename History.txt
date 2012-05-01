@@ -1,3 +1,9 @@
+=== 1.2.4 / 2012-05-01
+
+* 1 bug fix:
+
+  * Added missing require of yaml. (jameskyle)
+
 === 1.2.3 / 2011-08-03
 
 * 1 bug fix:
