@@ -1,17 +1,15 @@
 # -*- ruby -*-
 
-require 'rubygems'
-require 'hoe'
+require "rubygems"
+require "hoe"
 
 Hoe.plugin :seattlerb
-Hoe.plugins.delete :rubyforge
 
-Hoe.spec 'omnifocus-redmine' do
-  developer('aja', 'kushali@rubyforge.org')
+Hoe.spec "omnifocus-redmine" do
+  developer "aja", "kushali@rubyforge.org"
+  license "MIT"
 
   dependency "omnifocus", "~> 2.0"
-
-  self.rubyforge_name = 'seattlerb'
 end
 
 # vim: syntax=ruby
