@@ -1,3 +1,9 @@
+=== 1.2.5 / 2013-07-24
+
+* 1 minor enhancement:
+
+  * Updated dependency to omnifocus 2.x
+
 === 1.2.4 / 2012-05-01
 
 * 1 bug fix:
