@@ -37,7 +37,7 @@ module OmniFocus::Redmine
 
     # Authenticate if the user name and password are defined
     if username and password then
-      mechanize.basic_auth(username, password)
+      mechanize.add_auth redmine_url, username, password
     end
 
     default_query = "#{redmine_url}/issues.xml?assigned_to_id=#{user_id}"
